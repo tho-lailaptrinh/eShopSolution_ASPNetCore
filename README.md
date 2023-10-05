@@ -3,5 +3,8 @@
 -  ASP.NET CORE
 	- Entitis
 	- EntitiFramework
-# How to configure and run
-# How to configure 
+## How to configure and run
+## Installer Packages
+- Microsoft.EntityFrameworkCore.Design
+- Microsoft.EntityFrameworkCore.Tools
+- Microsoft>EntityFrameworkCore.SqlSever
