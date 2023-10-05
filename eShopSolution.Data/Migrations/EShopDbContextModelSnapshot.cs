@@ -366,7 +366,7 @@ namespace eShopSolution.Data.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2023, 10, 5, 10, 19, 29, 903, DateTimeKind.Local).AddTicks(4026),
+                            DateCreated = new DateTime(2023, 10, 5, 14, 13, 59, 589, DateTimeKind.Local).AddTicks(9870),
                             OriginalPrice = 10000m,
                             Price = 20000m,
                             Stock = 0,

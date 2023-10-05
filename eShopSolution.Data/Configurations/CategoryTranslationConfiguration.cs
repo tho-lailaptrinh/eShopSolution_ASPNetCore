@@ -11,7 +11,6 @@ namespace eShopSolution.Data.Configurations
 {
     public class CategoryTranslationConfiguration : IEntityTypeConfiguration<CategoryTranslation>
     {
-       
         public void Configure(EntityTypeBuilder<CategoryTranslation> builder)
         {
             builder.ToTable("CategoryTransactions");
@@ -23,7 +22,6 @@ namespace eShopSolution.Data.Configurations
             builder.Property(x => x.SeoAlias).IsRequired().HasMaxLength(200);
             builder.HasOne(x => x.Category).WithMany(x => x.CategoryTranslations).HasForeignKey(f => f.CategoryId);
             builder.HasOne(x => x.Language).WithMany(x => x.CategoryTranslations).HasForeignKey(f => f.LanguageId);
-
         }
     }
 }
