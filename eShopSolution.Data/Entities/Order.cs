@@ -18,9 +18,7 @@ namespace eShopSolution.Data.Entities
         public string ShipPhoneNumber { set; get; }
         public OderStatus Status { set; get; }
         public List<OrderDetail> OrderDetails { get; set; }
-
-        //public AppUser AppUser { get; set; } 
-
+        public AppUser AppUser { get; set; } 
 
     }
 }
