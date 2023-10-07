@@ -45,7 +45,7 @@ namespace eShopSolution.Data.EF
             modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("AppUserUserToken").HasKey(x => x.UserId);
             // Data Seeding
             modelBuilder.Seed();
-            // base.OnModelCreating(ModelBuilder); => Extensions    
+            // base.OnModelCreating(ModelBuilder); => Extensions
         }
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
@@ -58,5 +58,7 @@ namespace eShopSolution.Data.EF
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OderDetails { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<ProductInCategory> ProductInCategories { get; set; }
+        
     }
 }

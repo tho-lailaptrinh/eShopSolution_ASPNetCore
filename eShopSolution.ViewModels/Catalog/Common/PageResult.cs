@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eShopSolution.Application.Dtos
+namespace eShopSolution.ViewModels.Catalog.Common
 {
-    public class PageViewModel<T> //dùng cho tất các loại đối tường khác nhau
+    public class PageResult<T> //dùng cho tất các loại đối tường khác nhau
     {
         public List<T> Items { get; set; }
         public int TotalRecord { get; set; }
