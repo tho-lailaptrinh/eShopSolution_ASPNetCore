@@ -1,4 +1,7 @@
-﻿namespace eShopSolution.ViewModels.Catalog.Products.Manage
+﻿using Microsoft.AspNetCore.Http;
+using System;
+
+namespace eShopSolution.ViewModels.Catalog.Products.Manage
 {
     public class ProductUpdateRequest
     {
@@ -10,6 +13,7 @@
         public string SeoTitle { set; get; }
         public string SeoAlias { set; get; }
         public string LanguageId { set; get; }
+        public IFormFile ThumbnailImage { set; get; }
 
     }
 }
