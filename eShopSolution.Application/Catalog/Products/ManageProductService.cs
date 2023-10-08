@@ -4,7 +4,6 @@ using eShopSolution.Data.Entities;
 using eShopSolution.Utilities.Exceptions;
 using eShopSolution.ViewModels.Catalog.Common;
 using eShopSolution.ViewModels.Catalog.Products;
-using eShopSolution.ViewModels.Catalog.Products.Manage;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -94,7 +93,7 @@ namespace eShopSolution.Application.Catalog.Products
             _context.Products.Remove(product);
             return await _context.SaveChangesAsync();
         }
-        public async Task<PageResult<ProductViewModel>> GetAllPaging(GetProductPagingRequest request) //GetAllPaging nhận 1 đối tượng tham số đầu vào 
+        public async Task<PageResult<ProductViewModel>> GetAllPaging(GetManageProductPagingRequest request) //GetAllPaging nhận 1 đối tượng tham số đầu vào 
         {
 
             var query = from p in _context.Products
