@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
+using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
 namespace eShopSolution.Application.Catalog.Products
@@ -26,9 +27,10 @@ namespace eShopSolution.Application.Catalog.Products
             _storageService = storageService;
         }
 
-        public Task<int> AddImages(int productId, List<IFormFile> files)
+        public async Task<int> AddImages(int productId, List<IFormFile> files)
         {
-            throw new NotImplementedException();
+            var product = await _context.Products.FindAsync(productId);
+            return product.Id;
         }
 
         public async Task AddViewCount(int productId)
@@ -42,6 +44,7 @@ namespace eShopSolution.Application.Catalog.Products
         {
             var product = new Product()
             {
+
                 Price = request.Price,
                 OriginalPrice = request.OriginalPrice,
                 Stock = request.Stock,
@@ -77,8 +80,9 @@ namespace eShopSolution.Application.Catalog.Products
                     }
                 };
             }
-            _context.Products.Add(product);
-            return await _context.SaveChangesAsync();
+            await _context.Products.AddAsync(product);
+            await _context.SaveChangesAsync();
+            return product.Id;
         }
         // delete anhr
         public async Task<int> Delete(int productId)
@@ -134,6 +138,29 @@ namespace eShopSolution.Application.Catalog.Products
                 Items = data     // Items : danh sách sản phẩm trong trang hiện tại
             };
             return pageResult;
+        }
+
+        public async Task<ProductViewModel> GetById(int productId, string languageId)
+        {
+            var product = await _context.Products.FindAsync(productId);
+            var productTranslation = await _context.ProductTranslations.FirstOrDefaultAsync(x => x.ProductId == productId && x.LanguageId == languageId);
+            var productViewModel = new ProductViewModel()
+            {
+                Id = product.Id,
+                DateCreated = product.DateCreated,
+                Description = productTranslation != null ? productTranslation.Description : null,
+                LanguageId = productTranslation.LanguageId,
+                Details = productTranslation != null ? productTranslation.Details : null,
+                Name = productTranslation != null ? productTranslation.Name : null,
+                OriginalPrice = product.OriginalPrice,
+                Price = product.Price,
+                SeoAlias = productTranslation != null ? productTranslation.SeoAlias : null,
+                SeoDescription = productTranslation != null ? productTranslation.SeoDescription : null,
+                SeoTitle = productTranslation != null ? productTranslation.SeoTitle : null,
+                Stock = product.Stock,
+                ViewCount = product.ViewCount
+            };
+            return productViewModel;
         }
 
         public Task<List<ProductImageViewModel>> GetListImage(int productId)

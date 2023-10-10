@@ -17,13 +17,14 @@ namespace eShopSolution.Application.Catalog.Products
             _context = context;
         }
 
-        public async Task<List<ProductViewModel>> GetAll()
+        public async Task<List<ProductViewModel>> GetAll(string languageId)
         {
             // Select Join 
             var query = from p in _context.Products
                         join pt in _context.ProductTranslations on p.Id equals pt.ProductId
                         join pic in _context.ProductInCategories on p.Id equals pic.ProductId
                         join pich in _context.Categories on pic.CategoryId equals pich.Id
+                        where pt.LanguageId == languageId
                         select new { p, pt, pic };
             // 2. Filter
 
@@ -53,6 +54,7 @@ namespace eShopSolution.Application.Catalog.Products
                         join pt in _context.ProductTranslations on p.Id equals pt.ProductId
                         join pic in _context.ProductInCategories on p.Id equals pic.ProductId
                         join pich in _context.Categories on pic.CategoryId equals pich.Id
+                        where pt.LanguageId == request.LanguageId
                         select new { p, pt, pic };
             // 2. Filter
             if (request.CategoryId.HasValue && request.CategoryId.Value > 0)
