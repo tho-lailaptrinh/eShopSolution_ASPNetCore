@@ -9,6 +9,6 @@ namespace eShopSolution.Application.Catalog.Products
     {
         // Interface này chỉ dùng cho khách hành ở bên ngoài đọc
         Task<PageResult<ProductViewModel>> GetAllByCategoryId(GetPublicProductPagingRequest request);
-        Task<List<ProductViewModel>> GetAll();
+        Task<List<ProductViewModel>> GetAll(string languageId);
     }
 }

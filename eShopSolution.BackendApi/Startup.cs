@@ -1,4 +1,5 @@
 ﻿using eShopSolution.Application.Catalog.Products;
+using eShopSolution.Application.Common;
 using eShopSolution.Data.EF;
 using eShopSolution.Utilities.Constants;
 using Microsoft.AspNetCore.Builder;
@@ -32,6 +33,8 @@ namespace eShopSolution.BackendApi
             options.UseSqlServer(Configuration.GetConnectionString(SystemConstants.MainConnectionString)));
             // Declare DI - Khai Baos IPublicSV khởi tạo ra cái gì
             services.AddTransient<IPublicProductService, PublicProductService>();
+            services.AddTransient<IManageProductService, ManageProductService>();
+            services.AddTransient<IStorageService, FileStorageService>();
             services.AddControllersWithViews();
             services.AddSwaggerGen(c =>
             {
