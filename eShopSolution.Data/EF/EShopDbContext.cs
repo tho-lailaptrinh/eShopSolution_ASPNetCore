@@ -14,6 +14,7 @@ namespace eShopSolution.Data.EF
 {
     public class EShopDbContext : IdentityDbContext<AppUser, AppRole, Guid>
     {   
+        // contructer là hàm tạo mục đích để lưu trữ các thuộc tính của đối tượng
         public EShopDbContext(DbContextOptions options) : base(options)
         {
         }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eShopSolution.ViewModels.Catalog.Products
+namespace eShopSolution.ViewModels.ProductImages
 {
     public class ProductViewModel
     {
