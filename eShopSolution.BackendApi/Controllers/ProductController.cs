@@ -21,7 +21,7 @@ namespace eShopSolution.BackendApi.Controllers
         }
        
         // http://localhost:post/product?/pageIndex=1&pageSize=10&categoryId=1 
-        [HttpGet("{languagId}")]
+        [HttpGet("{languageId}")]
         public async Task<IActionResult> GetAllPaging(string languageId,[FromQuery]GetPublicProductPagingRequest request)
         {
             var products = await _publicProductService.GetAllByCategoryId(languageId,request);

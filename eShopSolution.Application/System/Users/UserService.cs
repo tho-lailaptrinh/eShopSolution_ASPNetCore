@@ -50,7 +50,7 @@ namespace eShopSolution.Application.System.Users
                 new Claim(ClaimTypes.GivenName, user.FirstName),
                 new Claim(ClaimTypes.Role, string.Join(";",roles))
             };
-            var key = new SymmetricSecurityKey(Encoding.Unicode.GetBytes(_config["Tokens:Key"]));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Tokens:Key"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(_config["Tokens:Issuer"],
