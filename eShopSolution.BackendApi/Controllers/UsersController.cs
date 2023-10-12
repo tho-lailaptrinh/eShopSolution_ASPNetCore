@@ -21,7 +21,7 @@ namespace eShopSolution.BackendApi.Controllers
         }
         [HttpPost]
         [AllowAnonymous] // Chưa đăng nhập cũng gọi được hàm này (Authencate) 
-        public async Task<IActionResult> Authencate([FromForm]LoginRequest request)
+        public async Task<IActionResult> Authenticate([FromForm]LoginRequest request)
         {
             if (!ModelState.IsValid)
             {
