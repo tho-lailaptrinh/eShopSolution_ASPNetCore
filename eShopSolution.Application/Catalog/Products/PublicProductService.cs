@@ -54,7 +54,7 @@ namespace eShopSolution.Application.Catalog.Products
             var pageResult = new PageResult<ProductViewModel>() // đối tượng trả về
             {
                 TotalRecord = tatolRow, // TotalRecord chứa tổng số bản ghi
-                Items = data     // Items : danh sách sản phẩm trong trang hiện tại
+                Items = data   // Items : danh sách sản phẩm trong trang hiện tại
             };
             return pageResult;
         }
